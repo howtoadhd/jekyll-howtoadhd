@@ -1,17 +1,17 @@
-{% if include.title %}
-    {% assign title = include.title %}
+{% if page.section_title %}
+    {% assign title = page.section_title %}
 {% else %}
     {% assign title = site.title %}
 {% endif %}
 
-{% if include.description %}
-    {% assign description = include.description %}
+{% if page.section_description %}
+    {% assign description = page.section_description %}
 {% else %}
     {% assign description = site.description %}
 {% endif %}
 <header class="section-header bg-light">
-    <h1>{{include.title}}</h1>
-    <p>{{include.description}}</p>
+    <h1>{{title}}</h1>
+    <p>{{description}}</p>
 </header>
 
-{% include section_nav.html nav=include.nav %}
+{% include section_nav.html nav=page.section_nav %}
