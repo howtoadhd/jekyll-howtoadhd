@@ -1,0 +1,13 @@
+@import "variables";
+@import "bootstrap/bootstrap";
+
+.section-header {
+  padding-left: $navbar-padding-x;
+  padding-right: $navbar-padding-x;
+  padding-top: ($navbar-padding-x / 4);
+  padding-bottom: ($navbar-padding-x / 4);
+}
+
+.page.container {
+  padding-top: $navbar-padding-x;
+}

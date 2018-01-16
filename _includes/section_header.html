@@ -1,0 +1,17 @@
+{% if include.title %}
+    {% assign title = include.title %}
+{% else %}
+    {% assign title = site.title %}
+{% endif %}
+
+{% if include.description %}
+    {% assign description = include.description %}
+{% else %}
+    {% assign description = site.description %}
+{% endif %}
+<header class="section-header bg-light">
+    <h1>{{include.title}}</h1>
+    <p>{{include.description}}</p>
+</header>
+
+{% include section_nav.html nav=include.nav %}
