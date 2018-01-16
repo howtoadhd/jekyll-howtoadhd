@@ -6,6 +6,25 @@
     <meta name="generator" content="Jekyll v{{ jekyll.version }}">
 
     <link rel="stylesheet" href="/assets/main.css">
+
+    {% if page.ext-css %}
+        {% for css in page.ext-css %}
+            {% if css.sri %}
+                <link href="{{ css.href }}" rel="stylesheet" integrity="{{ css.sri }}" crossorigin="anonymous">
+            {% elsif css.href %}
+                <link rel="stylesheet" href="{{ css.href }}" />
+            {% else %}
+                <link rel="stylesheet" href="{{ css }}" />
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if page.css %}
+        {% for css in page.css %}
+            <link rel="stylesheet" href="{{ css | prepend: site.baseurl | replace: '//', '/' }}" />
+        {% endfor %}
+    {% endif %}
+
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -44,5 +63,23 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
         integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
         crossorigin="anonymous"></script>
+
+{% if page.ext-js %}
+    {% for js in page.ext-js %}
+        {% if js.sri %}
+            <script src="{{ js.href }}" integrity="{{ js.sri }}" crossorigin="anonymous"></script>
+        {% elsif js.href %}
+            <script src="{{ js.href }}"></script>
+        {% else %}
+            <script src="{{ js }}"></script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if page.js %}
+    {% for js in page.js %}
+        <script src="{{ js | prepend: site.baseurl | replace: '//', '/' }}"></script>
+    {% endfor %}
+{% endif %}
 </body>
 </html>
