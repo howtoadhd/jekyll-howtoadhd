@@ -1,24 +1,34 @@
 @import "variables";
 @import "bootstrap/bootstrap";
 
+.navbar-engineering {
+  padding-left: ($navbar-padding-x / 2);
+  padding-right: ($navbar-padding-x / 2);
+  @include media-breakpoint-up(lg) {
+    padding-left: $navbar-padding-x;
+    padding-right: $navbar-padding-x;
+  }
+}
+
 .section-header {
-  padding-left: $navbar-padding-x;
-  padding-right: $navbar-padding-x;
+  padding-left: ($navbar-padding-x / 2);
+  padding-right: ($navbar-padding-x / 2);
   padding-top: ($navbar-padding-x / 4);
+
+  @include media-breakpoint-up(lg) {
+    padding-left: $navbar-padding-x;
+    padding-right: $navbar-padding-x;
+  }
 
   p {
     margin-bottom: 0;
     padding-bottom: 1rem;
   }
 
-  nav {
-    margin-left: -$navbar-padding-x;
-    margin-right: -$navbar-padding-x;
-
-    ul {
-      padding-left: $navbar-padding-x;
-      padding-right: $navbar-padding-x;
-    }
+  nav ul {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 }
 
@@ -80,7 +90,7 @@
   // background-color: #f5f2f9;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     @supports (position: sticky) {
       position: sticky;
       top: 4rem;
@@ -116,10 +126,14 @@
 
 .bd-search {
   position: relative; // To contain the Algolia search
-  padding: 1rem $navbar-padding-x;
+  padding: 1rem ($navbar-padding-x / 2);
   margin-right: -15px;
   margin-left: -15px;
   border-bottom: 1px solid rgba(0, 0, 0, .05);
+
+  @include media-breakpoint-up(lg) {
+    padding: 1rem $navbar-padding-x;
+  }
 
   .form-control:focus {
     border-color: $primary;
@@ -138,13 +152,17 @@
 
 .bd-toc-link {
   display: block;
-  padding: .25rem $navbar-padding-x;
+  padding: .25rem ($navbar-padding-x / 2);
   font-weight: 500;
   color: rgba(0, 0, 0, .65);
 
   &:hover {
     color: rgba(0, 0, 0, .85);
     text-decoration: none;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: .25rem $navbar-padding-x;
   }
 }
 
@@ -173,9 +191,13 @@
 // All levels of nav
 .bd-sidebar .nav > li > a {
   display: block;
-  padding: .25rem ($navbar-padding-x + 15px);
+  padding: .25rem (($navbar-padding-x / 2) + 15px);
   font-size: 90%;
   color: rgba(0, 0, 0, .65);
+
+  @include media-breakpoint-up(lg) {
+    padding: .25rem ($navbar-padding-x + 15px);
+  }
 }
 
 .bd-sidebar .nav > li > a:hover {
