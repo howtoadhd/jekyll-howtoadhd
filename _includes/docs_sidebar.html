@@ -1,0 +1,46 @@
+<section role="search" aria-label="Docs">
+    <form class="bd-search d-flex align-items-center">
+        <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..."
+               autocomplete="off">
+        <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse"
+                data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false"
+                aria-label="Toggle docs navigation">
+        </button>
+    </form>
+</section>
+
+<nav role="navigation" aria-label="Docs" class="collapse bd-links" id="bd-docs-nav">
+{% assign sections = site.pages | group_by: 'section' | sort: 'name' %}
+{% for section in sections %}
+    {% if section.name == page.section %}
+        {% assign groups = section.items | group_by: 'group' | sort: 'name' %}
+        {% for group in groups %}
+            {% unless group.name == '' %}
+                {% assign items = group.items | sort: 'order' %}
+
+                {% if group.name == page.group %}
+                    {%- assign active = 'active' -%}
+                {% endif %}
+
+                <div class="bd-toc-item {{active}}">
+                    <a class="bd-toc-link" href="{{ items.first.url | prepend: site.baseurl | replace: '//', '/' }}">{{ group.name }}</a>
+                    {% if group.name == page.group %}
+                        <ul class="nav bd-sidenav">
+                            {% for item in items %}
+                                {%- assign active = nil -%}
+                                {%- if page.url == item.url -%}
+                                    {%- assign active = 'active bd-sidenav-active' -%}
+                                {%- endif -%}
+
+                                <li class="{{active}}">
+                                    <a href="{{ item.url | prepend: site.baseurl | replace: '//', '/' }}">{{ item.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endunless %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+</nav>

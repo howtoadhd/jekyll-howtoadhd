@@ -1,0 +1,23 @@
+---
+layout: wrap
+---
+{% include section_header.html %}
+<main role="main" aria-label="Docs" class="container-fluid">
+    <div class="row flex-xl-nowrap">
+        <div class="col-12 col-md-4 col-lg-3 bd-sidebar">
+            {% include docs_sidebar.html %}
+        </div>
+
+        {% if page.toc %}
+        <nav role="navigation" aria-label="Page Contents" class="d-none d-xl-block col-xl-2 bd-toc">
+            {{ content | toc_only }}
+        </nav>
+        {% endif %}
+
+        <article class="col-12 col-md-8 col-lg-9 col-xl-7 py-md-3 pl-md-5 bd-content">
+            <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
+            <p class="bd-lead">{{ page.description | smartify }}</p>
+            {{ content }}
+        </article>
+    </div>
+</main>
