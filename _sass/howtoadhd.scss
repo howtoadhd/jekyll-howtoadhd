@@ -5,7 +5,21 @@
   padding-left: $navbar-padding-x;
   padding-right: $navbar-padding-x;
   padding-top: ($navbar-padding-x / 4);
-  padding-bottom: ($navbar-padding-x / 4);
+
+  p {
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+  }
+
+  nav {
+    margin-left: -$navbar-padding-x;
+    margin-right: -$navbar-padding-x;
+
+    ul {
+      padding-left: $navbar-padding-x;
+      padding-right: $navbar-padding-x;
+    }
+  }
 }
 
 .page.container {

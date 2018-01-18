@@ -9,9 +9,31 @@
 {% else %}
     {% assign description = site.description %}
 {% endif %}
-<header class="section-header bg-light">
+<header role="banner" aria-label="{{title}}" class="section-header bg-light">
     <h1>{{title}}</h1>
     <p>{{description}}</p>
-</header>
 
-{% include section_nav.html nav=page.section_nav %}
+    {% if page.section_nav %}
+        {% assign nav = page.section_nav %}
+    {% else %}
+        {% assign nav = site.nav %}
+    {% endif %}
+
+    {% if nav %}
+        <nav role="navigation" aria-label="{{title}}">
+            <ul class="nav nav-tabs">
+                {% for item in nav %}
+                {% if page.url contains item.active_when %}
+                {%- assign active = 'active' -%}
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link {{active}}" href="{{ item.url | prepend: site.baseurl | replace: '//', '/' }}" alt="{{ item.title }}">{{ item.title }}</a>
+                </li>
+
+                {%- assign active = nil -%}
+                {% endfor %}
+            </ul>
+        </nav>
+    {% endif %}
+</header>

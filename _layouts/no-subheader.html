@@ -2,5 +2,7 @@
 layout: wrap
 ---
 <main role="main" class="page container">
+    <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
+    <p class="bd-lead">{{ page.description | smartify }}</p>
     {{ content }}
 </main>
