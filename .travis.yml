@@ -11,6 +11,7 @@ jobs:
       after_success:
         - |
           if [ $TRAVIS_PULL_REQUEST == 'false' ] && [ $TRAVIS_BRANCH == 'master' ]; then
+            gem install travis
             export SUBBUILD_MESSAGE="Rebuild triggered by ${TRAVIS_REPO_SLUG}"
             ./.travis/trigger-build   howtoadhd   howtoadhd.github.io   src      "${SUBBUILD_MESSAGE}"
             ./.travis/trigger-build   howtoadhd   satis                 master   "${SUBBUILD_MESSAGE}"
