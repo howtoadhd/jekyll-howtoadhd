@@ -7,8 +7,7 @@ jobs:
   include:
 
     - stage: deploy
-      script:
-        - exit 0
+      script: skip
       after_success:
         - |
           if [ $TRAVIS_PULL_REQUEST == 'false' ] && [ $TRAVIS_BRANCH == 'master' ]; then
